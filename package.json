@@ -1,8 +1,7 @@
 {
   "name": "smarthub-system-contracts",
   "version": "1.1.0",
-  "description": "EWF's EWC system contracts",
-  "main": "truffle-config.js",
+  "description": "Nordic Energy's SmartHub system contracts",
   "directories": {
     "test": "test"
   },
