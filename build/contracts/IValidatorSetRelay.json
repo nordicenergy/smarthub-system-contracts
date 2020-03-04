@@ -1,0 +1,374 @@
+{
+  "contractName": "IValidatorSetRelay",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "name": "callbackInitiateChange",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"\",\"type\":\"bytes32\"},{\"name\":\"\",\"type\":\"address[]\"}],\"name\":\"callbackInitiateChange\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"callbackInitiateChange(bytes32,address[])\":{\"details\":\"Should emit `InitiateChange` event\",\"return\":\"True upon successful initiation, false otherwise\"}},\"title\":\"Reporting validator set relay interface\"},\"userdoc\":{\"methods\":{\"callbackInitiateChange(bytes32,address[])\":{\"notice\":\"Callback function to signal a desired change in the validator set in the contract seen by the engine\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelay.sol\":\"IValidatorSetRelay\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelay.sol\":{\"keccak256\":\"0x808d04fb5082831ccafc3b9f175347a0ac23ac61410027a194744028c50e8523\",\"urls\":[\"bzzr://aed55cd9b8351be3726c5a179be0c6e77a97f6c03a834d69f4b28a521bb306b6\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.5.8;\n\n\n/// @title Reporting validator set relay interface\ninterface IValidatorSetRelay {\n\n    /// @notice Callback function to signal a desired change in\n    /// the validator set in the contract seen by the engine\n    /// @dev Should emit `InitiateChange` event\n    /// @return True upon successful initiation, false otherwise\n    function callbackInitiateChange(bytes32, address[] calldata)\n        external\n        returns (bool);\n}\n",
+  "sourcePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelay.sol",
+  "ast": {
+    "absolutePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelay.sol",
+    "exportedSymbols": {
+      "IValidatorSetRelay": [
+        163
+      ]
+    },
+    "id": 164,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 152,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Reporting validator set relay interface",
+        "fullyImplemented": false,
+        "id": 163,
+        "linearizedBaseContracts": [
+          163
+        ],
+        "name": "IValidatorSetRelay",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Callback function to signal a desired change in\n the validator set in the contract seen by the engine\n @dev Should emit `InitiateChange` event\n @return True upon successful initiation, false otherwise",
+            "id": 162,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "callbackInitiateChange",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 158,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 154,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 162,
+                  "src": "382:7:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 153,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "382:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 157,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 162,
+                  "src": "391:18:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 155,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "391:7:4",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 156,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "391:9:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "381:29:4"
+            },
+            "returnParameters": {
+              "id": 161,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 160,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 162,
+                  "src": "445:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 159,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "445:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "444:6:4"
+            },
+            "scope": 163,
+            "src": "350:101:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 164,
+        "src": "76:377:4"
+      }
+    ],
+    "src": "0:454:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelay.sol",
+    "exportedSymbols": {
+      "IValidatorSetRelay": [
+        163
+      ]
+    },
+    "id": 164,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 152,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Reporting validator set relay interface",
+        "fullyImplemented": false,
+        "id": 163,
+        "linearizedBaseContracts": [
+          163
+        ],
+        "name": "IValidatorSetRelay",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Callback function to signal a desired change in\n the validator set in the contract seen by the engine\n @dev Should emit `InitiateChange` event\n @return True upon successful initiation, false otherwise",
+            "id": 162,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "callbackInitiateChange",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 158,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 154,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 162,
+                  "src": "382:7:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 153,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "382:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 157,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 162,
+                  "src": "391:18:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 155,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "391:7:4",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 156,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "391:9:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "381:29:4"
+            },
+            "returnParameters": {
+              "id": 161,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 160,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 162,
+                  "src": "445:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 159,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "445:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "444:6:4"
+            },
+            "scope": 163,
+            "src": "350:101:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 164,
+        "src": "76:377:4"
+      }
+    ],
+    "src": "0:454:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.10",
+  "updatedAt": "2020-03-04T11:19:07.933Z",
+  "devdoc": {
+    "methods": {
+      "callbackInitiateChange(bytes32,address[])": {
+        "details": "Should emit `InitiateChange` event",
+        "return": "True upon successful initiation, false otherwise"
+      }
+    },
+    "title": "Reporting validator set relay interface"
+  },
+  "userdoc": {
+    "methods": {
+      "callbackInitiateChange(bytes32,address[])": {
+        "notice": "Callback function to signal a desired change in the validator set in the contract seen by the engine"
+      }
+    }
+  }
+}

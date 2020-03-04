@@ -14,9 +14,9 @@ require('chai')
 
 contract('Holding', function (accounts) {
 
-    const ACCOUNT_WITH_FUNDS = '0x2526AeE4A3b281a5F17324E1F306a051bb4607Ae';
+    const ACCOUNT_WITH_FUNDS = '0x1b3b4AA508918f4Bc74284Ff8Cd4228e690fa15E';
     const ACCOUNT_FUNDING = web3.utils.toWei('99', 'ether').toString(10);
-    const ACCOUNT_WITH_NO_FUNDS = '0xaf9DdE98b6aeB2225bf87C2cB91c58833fbab2Ab';
+    const ACCOUNT_WITH_NO_FUNDS = '0x6EDf97AC48F89A891E646EB135231106BE764c7A';
     const TARGET_AMOUNT_BN = web3.utils.toBN(web3.utils.toWei('41198207933333333690000000', 'wei'));
     const TARGET_AMOUNT = TARGET_AMOUNT_BN.toString(10);
 

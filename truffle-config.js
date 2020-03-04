@@ -4,27 +4,27 @@ module.exports = {
   networks: {
     development: {
       host: "localhost",
-      port: 8545,
-      network_id: "*",
+      port: 8550,
+      network_id: "3",
     },
     test: {
       host: "localhost",
-      port: 8545,
+      port: 8550,
       gas: 79000000,
-      network_id: "*"
+      network_id: "3"
     },
     coverage: {
       host: "localhost",
-      network_id: "*",
+      network_id: "3",
       port: 7545,
       gas: 0xfffffffffff,
       gasPrice: 0x01
     },
     tobalaba: {
       host: "localhost",
-      port: 8545,
+      port: 8550,
       gas: 79999000,
-      network_id: "*"
+      network_id: "3"
     },
 
     // Another network with more advanced options...

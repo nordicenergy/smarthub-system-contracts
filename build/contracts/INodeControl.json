@@ -1,0 +1,1093 @@
+{
+  "contractName": "INodeControl",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "_targetValidator",
+          "type": "address"
+        }
+      ],
+      "name": "UpdateAvailable",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "confirmUpdate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_targetValidator",
+          "type": "address"
+        }
+      ],
+      "name": "retrieveExpectedState",
+      "outputs": [
+        {
+          "components": [
+            {
+              "name": "dockerSha",
+              "type": "bytes"
+            },
+            {
+              "name": "dockerName",
+              "type": "string"
+            },
+            {
+              "name": "chainSpecSha",
+              "type": "bytes"
+            },
+            {
+              "name": "chainSpecUrl",
+              "type": "string"
+            },
+            {
+              "name": "isSigning",
+              "type": "bool"
+            },
+            {
+              "name": "updateIntroduced",
+              "type": "uint256"
+            },
+            {
+              "name": "updateConfirmed",
+              "type": "uint256"
+            }
+          ],
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_targetValidator",
+          "type": "address"
+        }
+      ],
+      "name": "isUpdateConfirmed",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"confirmUpdate\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_targetValidator\",\"type\":\"address\"}],\"name\":\"retrieveExpectedState\",\"outputs\":[{\"components\":[{\"name\":\"dockerSha\",\"type\":\"bytes\"},{\"name\":\"dockerName\",\"type\":\"string\"},{\"name\":\"chainSpecSha\",\"type\":\"bytes\"},{\"name\":\"chainSpecUrl\",\"type\":\"string\"},{\"name\":\"isSigning\",\"type\":\"bool\"},{\"name\":\"updateIntroduced\",\"type\":\"uint256\"},{\"name\":\"updateConfirmed\",\"type\":\"uint256\"}],\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_targetValidator\",\"type\":\"address\"}],\"name\":\"isUpdateConfirmed\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_targetValidator\",\"type\":\"address\"}],\"name\":\"UpdateAvailable\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"isUpdateConfirmed(address)\":{\"params\":{\"_targetValidator\":\"The validator you want to check\"},\"return\":\"True if it is up to date, false if not\"},\"retrieveExpectedState(address)\":{\"params\":{\"_targetValidator\":\"The validator whos state you want\"},\"return\":\"A struct representing the stored state for the validator\"}}},\"userdoc\":{\"methods\":{\"confirmUpdate()\":{\"notice\":\"Set the timestamp in the validatorstate\"},\"isUpdateConfirmed(address)\":{\"notice\":\"View function to check if a validator has updated to the latest state\"},\"retrieveExpectedState(address)\":{\"notice\":\"Gets the state stored in the validatorstate mapping\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/INodeControl.sol\":\"INodeControl\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/INodeControl.sol\":{\"keccak256\":\"0xde1cef275ca5417030c3b0059e547e175f6954cdb3226b328e8b1f5fa3617749\",\"urls\":[\"bzzr://2ef0f98b7bac225be38a0a9bad3cff83aefba5536c39e9651b3d0d247266377a\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.5.8;\npragma experimental ABIEncoderV2;\n\n\ninterface INodeControl {\n    struct ValidatorState {\n        bytes dockerSha;\n        string dockerName;\n        bytes chainSpecSha;\n        string chainSpecUrl;\n        bool isSigning;\n        uint updateIntroduced;\n        uint updateConfirmed;\n    }\n\n    event UpdateAvailable(address indexed _targetValidator);\n\n    ///@notice Set the timestamp in the validatorstate\n    function confirmUpdate() external;\n\n    ///@notice Gets the state stored in the validatorstate mapping\n    ///@param _targetValidator The validator whos state you want\n    ///@return A struct representing the stored state for the validator\n    function retrieveExpectedState(address _targetValidator)\n        external\n        view\n        returns (ValidatorState memory);\n\n    ///@notice View function to check if a validator has updated to the latest state\n    ///@param _targetValidator The validator you want to check\n    ///@return True if it is up to date, false if not\n    function isUpdateConfirmed(address _targetValidator)\n        external\n        view\n        returns(bool);\n}\n",
+  "sourcePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/INodeControl.sol",
+  "ast": {
+    "absolutePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/INodeControl.sol",
+    "exportedSymbols": {
+      "INodeControl": [
+        115
+      ]
+    },
+    "id": 116,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 77,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:2"
+      },
+      {
+        "id": 78,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "23:33:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 115,
+        "linearizedBaseContracts": [
+          115
+        ],
+        "name": "INodeControl",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "INodeControl.ValidatorState",
+            "id": 93,
+            "members": [
+              {
+                "constant": false,
+                "id": 80,
+                "name": "dockerSha",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "120:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 79,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "120:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 82,
+                "name": "dockerName",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "145:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 81,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "145:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 84,
+                "name": "chainSpecSha",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "172:18:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 83,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "172:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 86,
+                "name": "chainSpecUrl",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "200:19:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 85,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "200:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 88,
+                "name": "isSigning",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "229:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 87,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "229:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 90,
+                "name": "updateIntroduced",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "253:21:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 89,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "253:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 92,
+                "name": "updateConfirmed",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "284:20:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 91,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "284:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ValidatorState",
+            "nodeType": "StructDefinition",
+            "scope": 115,
+            "src": "88:223:2",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 97,
+            "name": "UpdateAvailable",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 96,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 95,
+                  "indexed": true,
+                  "name": "_targetValidator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "339:32:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 94,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "339:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "338:34:2"
+            },
+            "src": "317:56:2"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Set the timestamp in the validatorstate",
+            "id": 100,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "confirmUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 98,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "456:2:2"
+            },
+            "returnParameters": {
+              "id": 99,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "467:0:2"
+            },
+            "scope": 115,
+            "src": "434:34:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Gets the state stored in the validatorstate mapping\n@param _targetValidator The validator whos state you want\n@return A struct representing the stored state for the validator",
+            "id": 107,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "retrieveExpectedState",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 103,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 102,
+                  "name": "_targetValidator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 107,
+                  "src": "709:24:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 101,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "709:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "708:26:2"
+            },
+            "returnParameters": {
+              "id": 106,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 105,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 107,
+                  "src": "782:21:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ValidatorState_$93_memory_ptr",
+                    "typeString": "struct INodeControl.ValidatorState"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 104,
+                    "name": "ValidatorState",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 93,
+                    "src": "782:14:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ValidatorState_$93_storage_ptr",
+                      "typeString": "struct INodeControl.ValidatorState"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "781:23:2"
+            },
+            "scope": 115,
+            "src": "678:127:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice View function to check if a validator has updated to the latest state\n@param _targetValidator The validator you want to check\n@return True if it is up to date, false if not",
+            "id": 114,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isUpdateConfirmed",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 110,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 109,
+                  "name": "_targetValidator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 114,
+                  "src": "1040:24:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 108,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1040:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1039:26:2"
+            },
+            "returnParameters": {
+              "id": 113,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 112,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 114,
+                  "src": "1112:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 111,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1112:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1111:6:2"
+            },
+            "scope": 115,
+            "src": "1013:105:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 116,
+        "src": "59:1061:2"
+      }
+    ],
+    "src": "0:1121:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/INodeControl.sol",
+    "exportedSymbols": {
+      "INodeControl": [
+        115
+      ]
+    },
+    "id": 116,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 77,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:2"
+      },
+      {
+        "id": 78,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "23:33:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 115,
+        "linearizedBaseContracts": [
+          115
+        ],
+        "name": "INodeControl",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "INodeControl.ValidatorState",
+            "id": 93,
+            "members": [
+              {
+                "constant": false,
+                "id": 80,
+                "name": "dockerSha",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "120:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 79,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "120:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 82,
+                "name": "dockerName",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "145:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 81,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "145:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 84,
+                "name": "chainSpecSha",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "172:18:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 83,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "172:5:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 86,
+                "name": "chainSpecUrl",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "200:19:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 85,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "200:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 88,
+                "name": "isSigning",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "229:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 87,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "229:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 90,
+                "name": "updateIntroduced",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "253:21:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 89,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "253:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 92,
+                "name": "updateConfirmed",
+                "nodeType": "VariableDeclaration",
+                "scope": 93,
+                "src": "284:20:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 91,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "284:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ValidatorState",
+            "nodeType": "StructDefinition",
+            "scope": 115,
+            "src": "88:223:2",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 97,
+            "name": "UpdateAvailable",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 96,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 95,
+                  "indexed": true,
+                  "name": "_targetValidator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "339:32:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 94,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "339:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "338:34:2"
+            },
+            "src": "317:56:2"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Set the timestamp in the validatorstate",
+            "id": 100,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "confirmUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 98,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "456:2:2"
+            },
+            "returnParameters": {
+              "id": 99,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "467:0:2"
+            },
+            "scope": 115,
+            "src": "434:34:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Gets the state stored in the validatorstate mapping\n@param _targetValidator The validator whos state you want\n@return A struct representing the stored state for the validator",
+            "id": 107,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "retrieveExpectedState",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 103,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 102,
+                  "name": "_targetValidator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 107,
+                  "src": "709:24:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 101,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "709:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "708:26:2"
+            },
+            "returnParameters": {
+              "id": 106,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 105,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 107,
+                  "src": "782:21:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ValidatorState_$93_memory_ptr",
+                    "typeString": "struct INodeControl.ValidatorState"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 104,
+                    "name": "ValidatorState",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 93,
+                    "src": "782:14:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ValidatorState_$93_storage_ptr",
+                      "typeString": "struct INodeControl.ValidatorState"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "781:23:2"
+            },
+            "scope": 115,
+            "src": "678:127:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice View function to check if a validator has updated to the latest state\n@param _targetValidator The validator you want to check\n@return True if it is up to date, false if not",
+            "id": 114,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isUpdateConfirmed",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 110,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 109,
+                  "name": "_targetValidator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 114,
+                  "src": "1040:24:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 108,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1040:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1039:26:2"
+            },
+            "returnParameters": {
+              "id": 113,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 112,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 114,
+                  "src": "1112:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 111,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1112:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1111:6:2"
+            },
+            "scope": 115,
+            "src": "1013:105:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 116,
+        "src": "59:1061:2"
+      }
+    ],
+    "src": "0:1121:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.10",
+  "updatedAt": "2020-03-04T11:19:07.932Z",
+  "devdoc": {
+    "methods": {
+      "isUpdateConfirmed(address)": {
+        "params": {
+          "_targetValidator": "The validator you want to check"
+        },
+        "return": "True if it is up to date, false if not"
+      },
+      "retrieveExpectedState(address)": {
+        "params": {
+          "_targetValidator": "The validator whos state you want"
+        },
+        "return": "A struct representing the stored state for the validator"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "confirmUpdate()": {
+        "notice": "Set the timestamp in the validatorstate"
+      },
+      "isUpdateConfirmed(address)": {
+        "notice": "View function to check if a validator has updated to the latest state"
+      },
+      "retrieveExpectedState(address)": {
+        "notice": "Gets the state stored in the validatorstate mapping"
+      }
+    }
+  }
+}

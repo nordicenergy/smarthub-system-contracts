@@ -1,5 +1,5 @@
-# Nordic Energy SmartHub system contracts
-Infrastructure contracts for SmartHub live launch.
+# EWC system contracts
+Infrastructure contracts for EnergyWeb Chain (EWC) live launch.
 
 [![Build Status](https://travis-ci.com/nordicenergy/smarthub-system-contracts.svg?token=citknsDHYPZgYDNiiBdy&branch=master)](https://travis-ci.com/nordicenergy/smarthub-system-contracts)
 [![Coverage Status](https://coveralls.io/repos/github/nordicenergy/smarthub-system-contracts/badge.svg?branch=master)](https://coveralls.io/github/nordicenergy/smarthub-system-contracts?branch=master)

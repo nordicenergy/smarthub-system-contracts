@@ -1,0 +1,497 @@
+{
+  "contractName": "IBlockReward",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "benefactors",
+          "type": "address[]"
+        },
+        {
+          "name": "kind",
+          "type": "uint16[]"
+        }
+      ],
+      "name": "reward",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        },
+        {
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"benefactors\",\"type\":\"address[]\"},{\"name\":\"kind\",\"type\":\"uint16[]\"}],\"name\":\"reward\",\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"},{\"name\":\"\",\"type\":\"uint256[]\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"This interface must be implemented by a system contract that implements the reward logic\",\"methods\":{\"reward(address[],uint16[])\":{\"details\":\"Should only be callable by `SYSTEM_ADDRESS`\",\"params\":{\"benefactors\":\"The list of addresses who can be rewarded\",\"kind\":\"The corresponding list of benefactor types\"},\"return\":\"The list of addresses to be rewarded and the corresponding list of reward amounts\"}},\"title\":\"BlockReward contract interface\"},\"userdoc\":{\"methods\":{\"reward(address[],uint16[])\":{\"notice\":\"Produces rewards for the given benefactors, with corresponding reward codes\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IBlockReward.sol\":\"IBlockReward\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IBlockReward.sol\":{\"keccak256\":\"0x74fead368e43d0af75d73f19850922aca47c2a3bf3ed362ec81decf1f7acce26\",\"urls\":[\"bzzr://0df3fbbdc76727643bb684313e1915fd5fc9b4dc5594997fedcf1f4bf46b947f\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.5.8;\n\n\n/// @title BlockReward contract interface\n/// @dev This interface must be implemented by a system contract that implements the\n/// reward logic\ninterface IBlockReward {\n\n    /// @notice Produces rewards for the given benefactors,\n    /// with corresponding reward codes\n    /// @dev Should only be callable by `SYSTEM_ADDRESS`\n    /// @param benefactors The list of addresses who can be rewarded\n    /// @param kind The corresponding list of benefactor types\n    /// @return The list of addresses to be rewarded and the corresponding list of reward amounts\n    function reward(address[] calldata benefactors, uint16[] calldata kind)\n        external\n        returns (address[] memory, uint256[] memory);\n}\n",
+  "sourcePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IBlockReward.sol",
+  "ast": {
+    "absolutePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IBlockReward.sol",
+    "exportedSymbols": {
+      "IBlockReward": [
+        75
+      ]
+    },
+    "id": 76,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 59,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title BlockReward contract interface\n @dev This interface must be implemented by a system contract that implements the\n reward logic",
+        "fullyImplemented": false,
+        "id": 75,
+        "linearizedBaseContracts": [
+          75
+        ],
+        "name": "IBlockReward",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Produces rewards for the given benefactors,\n with corresponding reward codes\n @dev Should only be callable by `SYSTEM_ADDRESS`\n @param benefactors The list of addresses who can be rewarded\n @param kind The corresponding list of benefactor types\n @return The list of addresses to be rewarded and the corresponding list of reward amounts",
+            "id": 74,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "reward",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 66,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 62,
+                  "name": "benefactors",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 74,
+                  "src": "602:30:1",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 60,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "602:7:1",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 61,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "602:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 65,
+                  "name": "kind",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 74,
+                  "src": "634:22:1",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint16_$dyn_calldata_ptr",
+                    "typeString": "uint16[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 63,
+                      "name": "uint16",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "634:6:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint16",
+                        "typeString": "uint16"
+                      }
+                    },
+                    "id": 64,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "634:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint16_$dyn_storage_ptr",
+                      "typeString": "uint16[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "601:56:1"
+            },
+            "returnParameters": {
+              "id": 73,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 69,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 74,
+                  "src": "692:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 67,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "692:7:1",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 68,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "692:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 72,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 74,
+                  "src": "710:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 70,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "710:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 71,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "710:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "691:36:1"
+            },
+            "scope": 75,
+            "src": "586:142:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 76,
+        "src": "169:561:1"
+      }
+    ],
+    "src": "0:731:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IBlockReward.sol",
+    "exportedSymbols": {
+      "IBlockReward": [
+        75
+      ]
+    },
+    "id": 76,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 59,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title BlockReward contract interface\n @dev This interface must be implemented by a system contract that implements the\n reward logic",
+        "fullyImplemented": false,
+        "id": 75,
+        "linearizedBaseContracts": [
+          75
+        ],
+        "name": "IBlockReward",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Produces rewards for the given benefactors,\n with corresponding reward codes\n @dev Should only be callable by `SYSTEM_ADDRESS`\n @param benefactors The list of addresses who can be rewarded\n @param kind The corresponding list of benefactor types\n @return The list of addresses to be rewarded and the corresponding list of reward amounts",
+            "id": 74,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "reward",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 66,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 62,
+                  "name": "benefactors",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 74,
+                  "src": "602:30:1",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 60,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "602:7:1",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 61,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "602:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 65,
+                  "name": "kind",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 74,
+                  "src": "634:22:1",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint16_$dyn_calldata_ptr",
+                    "typeString": "uint16[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 63,
+                      "name": "uint16",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "634:6:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint16",
+                        "typeString": "uint16"
+                      }
+                    },
+                    "id": 64,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "634:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint16_$dyn_storage_ptr",
+                      "typeString": "uint16[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "601:56:1"
+            },
+            "returnParameters": {
+              "id": 73,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 69,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 74,
+                  "src": "692:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 67,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "692:7:1",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 68,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "692:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 72,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 74,
+                  "src": "710:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 70,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "710:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 71,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "710:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "691:36:1"
+            },
+            "scope": 75,
+            "src": "586:142:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 76,
+        "src": "169:561:1"
+      }
+    ],
+    "src": "0:731:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.10",
+  "updatedAt": "2020-03-04T11:19:07.931Z",
+  "devdoc": {
+    "details": "This interface must be implemented by a system contract that implements the reward logic",
+    "methods": {
+      "reward(address[],uint16[])": {
+        "details": "Should only be callable by `SYSTEM_ADDRESS`",
+        "params": {
+          "benefactors": "The list of addresses who can be rewarded",
+          "kind": "The corresponding list of benefactor types"
+        },
+        "return": "The list of addresses to be rewarded and the corresponding list of reward amounts"
+      }
+    },
+    "title": "BlockReward contract interface"
+  },
+  "userdoc": {
+    "methods": {
+      "reward(address[],uint16[])": {
+        "notice": "Produces rewards for the given benefactors, with corresponding reward codes"
+      }
+    }
+  }
+}

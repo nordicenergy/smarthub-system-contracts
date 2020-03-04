@@ -1,0 +1,881 @@
+{
+  "contractName": "IValidatorSetRelayed",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "finalizeChange",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "reporter",
+          "type": "address"
+        },
+        {
+          "name": "validator",
+          "type": "address"
+        },
+        {
+          "name": "blockNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "reportBenign",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "reporter",
+          "type": "address"
+        },
+        {
+          "name": "validator",
+          "type": "address"
+        },
+        {
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "name": "proof",
+          "type": "bytes"
+        }
+      ],
+      "name": "reportMalicious",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getValidators",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"finalizeChange\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getValidators\",\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"reporter\",\"type\":\"address\"},{\"name\":\"validator\",\"type\":\"address\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"},{\"name\":\"proof\",\"type\":\"bytes\"}],\"name\":\"reportMalicious\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"reporter\",\"type\":\"address\"},{\"name\":\"validator\",\"type\":\"address\"},{\"name\":\"blockNumber\",\"type\":\"uint256\"}],\"name\":\"reportBenign\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"This interface is used by Aura PoA validator contracts to manage active validators and send reports on misbehaving validators\",\"methods\":{\"finalizeChange()\":{\"details\":\"Should only be valid when msg.sender == SYSTEM (EIP96, 2**160 - 2)\"},\"getValidators()\":{\"return\":\"List of addresses of the currently active validators\"},\"reportBenign(address,address,uint256)\":{\"params\":{\"blockNumber\":\"The blocknumber to report on\",\"reporter\":\"Address of the reporter\",\"validator\":\"Address of the validator to report\"}},\"reportMalicious(address,address,uint256,bytes)\":{\"params\":{\"blockNumber\":\"The blocknumber to report on\",\"proof\":\"Proof attached\",\"reporter\":\"Address of the reporter\",\"validator\":\"Address of the validator to report\"}}},\"title\":\"Reporting validator set interface\"},\"userdoc\":{\"methods\":{\"finalizeChange()\":{\"notice\":\"Called when an initiated change reaches finality and is activated It is also called when the contract is first enabled for consensus. In this case, the \\\"change\\\" finalized is the activation of the initial set\"},\"getValidators()\":{\"notice\":\"Get current validator set (last enacted or initial if no changes ever made)\"},\"reportBenign(address,address,uint256)\":{\"notice\":\"Reports benign misbehavior of a validator in the current validator set (e.g. validator offline)\"},\"reportMalicious(address,address,uint256,bytes)\":{\"notice\":\"Reports malicious misbehavior of validator of the current validator set and provides proof of that misbehavor, which varies by engine (e.g. double vote)\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelayed.sol\":\"IValidatorSetRelayed\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelayed.sol\":{\"keccak256\":\"0x6503fc6bbd195fccf948de01cdf170073b64b8f77c94b14b53c9ac57b77eea9b\",\"urls\":[\"bzzr://eadb5b0b030f399fcbb877efc19c04da5c7712416ec28c9b8ca310b27ff17497\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.5.8;\n\n\n/// @title Reporting validator set interface\n/// @dev This interface is used by Aura PoA validator contracts to manage active validators and\n/// send reports on misbehaving validators\ninterface IValidatorSetRelayed {\n\n    /// @notice Called when an initiated change reaches finality and is activated\n    /// It is also called when the contract is first enabled for consensus. In this case,\n    /// the \"change\" finalized is the activation of the initial set\n    /// @dev Should only be valid when msg.sender == SYSTEM (EIP96, 2**160 - 2)\n    function finalizeChange()\n        external;\n\n    /// @notice Reports benign misbehavior of a validator in the current validator set (e.g. validator offline)\n    /// @param reporter Address of the reporter\n    /// @param validator Address of the validator to report\n    /// @param blockNumber The blocknumber to report on\n    function reportBenign(\n        address reporter,\n        address validator,\n        uint256 blockNumber\n    )\n        external;\n\n    /// @notice Reports malicious misbehavior of validator of the current validator set\n    /// and provides proof of that misbehavor, which varies by engine (e.g. double vote)\n    /// @param reporter Address of the reporter\n    /// @param validator Address of the validator to report\n    /// @param blockNumber The blocknumber to report on\n    /// @param proof Proof attached\n    function reportMalicious(\n        address reporter,\n        address validator,\n        uint256 blockNumber,\n        bytes calldata proof\n    )\n        external;\n\n    /// @notice Get current validator set (last enacted or initial if no changes ever made)\n    /// @return List of addresses of the currently active validators\n    function getValidators()\n        external\n        view\n        returns (address[] memory);\n}\n",
+  "sourcePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelayed.sol",
+  "ast": {
+    "absolutePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelayed.sol",
+    "exportedSymbols": {
+      "IValidatorSetRelayed": [
+        195
+      ]
+    },
+    "id": 196,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 165,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:5"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Reporting validator set interface\n @dev This interface is used by Aura PoA validator contracts to manage active validators and\n send reports on misbehaving validators",
+        "fullyImplemented": false,
+        "id": 195,
+        "linearizedBaseContracts": [
+          195
+        ],
+        "name": "IValidatorSetRelayed",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Called when an initiated change reaches finality and is activated\n It is also called when the contract is first enabled for consensus. In this case,\n the \"change\" finalized is the activation of the initial set\n @dev Should only be valid when msg.sender == SYSTEM (EIP96, 2**160 - 2)",
+            "id": 168,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "finalizeChange",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 166,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "590:2:5"
+            },
+            "returnParameters": {
+              "id": 167,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "609:0:5"
+            },
+            "scope": 195,
+            "src": "567:43:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Reports benign misbehavior of a validator in the current validator set (e.g. validator offline)\n @param reporter Address of the reporter\n @param validator Address of the validator to report\n @param blockNumber The blocknumber to report on",
+            "id": 177,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "reportBenign",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 175,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 170,
+                  "name": "reporter",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 177,
+                  "src": "923:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 169,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "923:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 172,
+                  "name": "validator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 177,
+                  "src": "949:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 171,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "949:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 174,
+                  "name": "blockNumber",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 177,
+                  "src": "976:19:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 173,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "976:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "913:88:5"
+            },
+            "returnParameters": {
+              "id": 176,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1018:0:5"
+            },
+            "scope": 195,
+            "src": "892:127:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Reports malicious misbehavior of validator of the current validator set\n and provides proof of that misbehavor, which varies by engine (e.g. double vote)\n @param reporter Address of the reporter\n @param validator Address of the validator to report\n @param blockNumber The blocknumber to report on\n @param proof Proof attached",
+            "id": 188,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "reportMalicious",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 186,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 179,
+                  "name": "reporter",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 188,
+                  "src": "1436:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 178,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1436:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 181,
+                  "name": "validator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 188,
+                  "src": "1462:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 180,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1462:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 183,
+                  "name": "blockNumber",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 188,
+                  "src": "1489:19:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 182,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1489:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 185,
+                  "name": "proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 188,
+                  "src": "1518:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 184,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1518:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1426:118:5"
+            },
+            "returnParameters": {
+              "id": 187,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1561:0:5"
+            },
+            "scope": 195,
+            "src": "1402:160:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Get current validator set (last enacted or initial if no changes ever made)\n @return List of addresses of the currently active validators",
+            "id": 194,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getValidators",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 189,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1751:2:5"
+            },
+            "returnParameters": {
+              "id": 193,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 192,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 194,
+                  "src": "1801:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 190,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1801:7:5",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 191,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1801:9:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1800:18:5"
+            },
+            "scope": 195,
+            "src": "1729:90:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 196,
+        "src": "209:1612:5"
+      }
+    ],
+    "src": "0:1822:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/mikovainio/WebstormProjects/smarthub-system-contracts/contracts/interfaces/IValidatorSetRelayed.sol",
+    "exportedSymbols": {
+      "IValidatorSetRelayed": [
+        195
+      ]
+    },
+    "id": 196,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 165,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:5"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Reporting validator set interface\n @dev This interface is used by Aura PoA validator contracts to manage active validators and\n send reports on misbehaving validators",
+        "fullyImplemented": false,
+        "id": 195,
+        "linearizedBaseContracts": [
+          195
+        ],
+        "name": "IValidatorSetRelayed",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Called when an initiated change reaches finality and is activated\n It is also called when the contract is first enabled for consensus. In this case,\n the \"change\" finalized is the activation of the initial set\n @dev Should only be valid when msg.sender == SYSTEM (EIP96, 2**160 - 2)",
+            "id": 168,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "finalizeChange",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 166,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "590:2:5"
+            },
+            "returnParameters": {
+              "id": 167,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "609:0:5"
+            },
+            "scope": 195,
+            "src": "567:43:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Reports benign misbehavior of a validator in the current validator set (e.g. validator offline)\n @param reporter Address of the reporter\n @param validator Address of the validator to report\n @param blockNumber The blocknumber to report on",
+            "id": 177,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "reportBenign",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 175,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 170,
+                  "name": "reporter",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 177,
+                  "src": "923:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 169,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "923:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 172,
+                  "name": "validator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 177,
+                  "src": "949:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 171,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "949:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 174,
+                  "name": "blockNumber",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 177,
+                  "src": "976:19:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 173,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "976:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "913:88:5"
+            },
+            "returnParameters": {
+              "id": 176,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1018:0:5"
+            },
+            "scope": 195,
+            "src": "892:127:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Reports malicious misbehavior of validator of the current validator set\n and provides proof of that misbehavor, which varies by engine (e.g. double vote)\n @param reporter Address of the reporter\n @param validator Address of the validator to report\n @param blockNumber The blocknumber to report on\n @param proof Proof attached",
+            "id": 188,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "reportMalicious",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 186,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 179,
+                  "name": "reporter",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 188,
+                  "src": "1436:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 178,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1436:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 181,
+                  "name": "validator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 188,
+                  "src": "1462:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 180,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1462:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 183,
+                  "name": "blockNumber",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 188,
+                  "src": "1489:19:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 182,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1489:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 185,
+                  "name": "proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 188,
+                  "src": "1518:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 184,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1518:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1426:118:5"
+            },
+            "returnParameters": {
+              "id": 187,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1561:0:5"
+            },
+            "scope": 195,
+            "src": "1402:160:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Get current validator set (last enacted or initial if no changes ever made)\n @return List of addresses of the currently active validators",
+            "id": 194,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getValidators",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 189,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1751:2:5"
+            },
+            "returnParameters": {
+              "id": 193,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 192,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 194,
+                  "src": "1801:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 190,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1801:7:5",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 191,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1801:9:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1800:18:5"
+            },
+            "scope": 195,
+            "src": "1729:90:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 196,
+        "src": "209:1612:5"
+      }
+    ],
+    "src": "0:1822:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.10",
+  "updatedAt": "2020-03-04T11:19:07.934Z",
+  "devdoc": {
+    "details": "This interface is used by Aura PoA validator contracts to manage active validators and send reports on misbehaving validators",
+    "methods": {
+      "finalizeChange()": {
+        "details": "Should only be valid when msg.sender == SYSTEM (EIP96, 2**160 - 2)"
+      },
+      "getValidators()": {
+        "return": "List of addresses of the currently active validators"
+      },
+      "reportBenign(address,address,uint256)": {
+        "params": {
+          "blockNumber": "The blocknumber to report on",
+          "reporter": "Address of the reporter",
+          "validator": "Address of the validator to report"
+        }
+      },
+      "reportMalicious(address,address,uint256,bytes)": {
+        "params": {
+          "blockNumber": "The blocknumber to report on",
+          "proof": "Proof attached",
+          "reporter": "Address of the reporter",
+          "validator": "Address of the validator to report"
+        }
+      }
+    },
+    "title": "Reporting validator set interface"
+  },
+  "userdoc": {
+    "methods": {
+      "finalizeChange()": {
+        "notice": "Called when an initiated change reaches finality and is activated It is also called when the contract is first enabled for consensus. In this case, the \"change\" finalized is the activation of the initial set"
+      },
+      "getValidators()": {
+        "notice": "Get current validator set (last enacted or initial if no changes ever made)"
+      },
+      "reportBenign(address,address,uint256)": {
+        "notice": "Reports benign misbehavior of a validator in the current validator set (e.g. validator offline)"
+      },
+      "reportMalicious(address,address,uint256,bytes)": {
+        "notice": "Reports malicious misbehavior of validator of the current validator set and provides proof of that misbehavor, which varies by engine (e.g. double vote)"
+      }
+    }
+  }
+}

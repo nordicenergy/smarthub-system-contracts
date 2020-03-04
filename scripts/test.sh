@@ -7,7 +7,7 @@ source ${cdir}/ganache.sh
 
 trap ganache_cleanup EXIT
 
-GANACHE_PORT=${GANACHE_PORT:-8545}
+GANACHE_PORT=${GANACHE_PORT:-8550nordicenergy}
 
 if ganache_running $GANACHE_PORT; then
   echo "Using existing ganache-cli instance."
