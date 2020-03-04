@@ -1,4 +1,4 @@
-# EWC system contracts
+# SmartHub system contracts
 Infrastructure contracts for EnergyWeb Chain (EWC) live launch.
 
 [![Build Status](https://travis-ci.com/nordicenergy/smarthub-system-contracts.svg?token=citknsDHYPZgYDNiiBdy&branch=master)](https://travis-ci.com/nordicenergy/smarthub-system-contracts)
