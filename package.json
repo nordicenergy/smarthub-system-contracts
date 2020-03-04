@@ -1,0 +1,55 @@
+{
+  "name": "smarthub-system-contracts",
+  "version": "1.1.0",
+  "description": "EWF's EWC system contracts",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nordicenergy/smarthub-system-contracts.git"
+  },
+  "keywords": [
+    "ewf",
+    "energyweb",
+    "system",
+    "contracts",
+    "smarthub"
+  ],
+  "author": "Nordic Energy",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/nordicenergy/smarthub-system-contracts/issues"
+  },
+  "homepage": "https://github.com/nordicenergy/smarthub-system-contracts#readme",
+  "scripts": {
+    "test": "scripts/test.sh",
+    "compile": "npx truffle compile",
+    "migrate": "npx truffle migrate",
+    "coverage": "npx solidity-coverage",
+    "coverage_publish": "scripts/coveralls.sh",
+    "lint:solium": "npx solium -d contracts/",
+    "lint:solium:fix": "npx solium -d contracts/ --fix",
+    "lint:solhint": "npx solhint \"contracts/**/*.sol\"",
+    "ganache": "npx ganache-cli --port 8545",
+    "verify": "npx truffle run verify --all",
+    "security": "slither . --config-file .slither.conf.json"
+  },
+  "devDependencies": {
+    "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
+    "chai-bn": "0.1.1",
+    "coveralls": "^3.0.3",
+    "csv-parser": "2.3.0",
+    "ethlint": "1.2.4",
+    "ganache-cli": "6.4.3",
+    "solhint": "1.5.1",
+    "solidity-coverage": "0.6.0-beta.5",
+    "solium-plugin-zeppelin": "0.0.2",
+    "truffle": "5.0.21",
+    "truffle-security": "^1.5.0",
+    "web3": "1.0.0-beta.37"
+  },
+  "dependencies": {}
+}
